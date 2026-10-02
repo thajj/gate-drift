@@ -19,3 +19,21 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s tests -v
       - run: python -m gate_drift --demo --format json --no-fail
+  real-history:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test the validation runner
+        run: python -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Fetch pinned public history without checkout
+        run: python scripts/fetch_validation_history.py
+      - name: Verify findings and source addresses
+        run: python scripts/validate_history.py --repos-root .validation-repos --output validation-ci.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-history-results
+          path: validation-ci.json

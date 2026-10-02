@@ -6,7 +6,7 @@ Gate Drift reviews Git changes for newly skipped tests, lower coverage requireme
 
 Python 3.10+ · Git 2.29+ · **zero runtime dependencies** · offline · MIT
 
-[Try the live synthetic demo](https://toufichajj.dev/gate-drift/) · [Download the latest release](https://github.com/thajj/gate-drift/releases/latest)
+[See real repository evidence](https://toufichajj.dev/gate-drift/validation.html) · [Try the synthetic demo](https://toufichajj.dev/gate-drift/) · [Download the latest release](https://github.com/thajj/gate-drift/releases/latest)
 
 ```diff
 - test('rejects invalid credentials', () => {
@@ -28,6 +28,24 @@ python3 -m gate_drift --demo --html gate-drift-report.html --no-fail
 Open `gate-drift-report.html` in a browser. The demo uses synthetic changes and inspects no real repository. No install, account, model, or API key is needed.
 
 ![Synthetic Gate Drift report](docs/demo.jpg)
+
+## Evidence from real repositories
+
+The [published history report](https://toufichajj.dev/gate-drift/validation.html) checks 50 pinned comparisons from pytest, Vitest, Playwright, ESLint, EventRelay, and ebg-protrack. It records 11 source-addressed signals across four rule families, exact expected locations, and out-of-scope changes. Some findings are intentional maintenance decisions, such as Playwright skipping a test that starts its own tracing and ESLint allowing a failed step so a notification can run.
+
+Forty comparisons are consecutive first-parent transitions from two frozen repository heads. Ten are selected historical examples; two inspect only configuration files. A separate AI review pass labeled source diffs without detector output. The initial detector missed three Vitest conditional skips; this sample helped improve the rules. These are project-authored regression cases, **not a held-out accuracy estimate** or validation by the upstream maintainers.
+
+Reproduce the source checks without running upstream code:
+
+```sh
+# Explicit network step: fetch pinned public Git objects without checkout.
+python3 scripts/fetch_validation_history.py
+
+# Offline analysis: fail on missing signals, extra signals, or invalid addresses.
+python3 scripts/validate_history.py --repos-root .validation-repos --output validation-local.json
+```
+
+The [dataset](validation/dataset.json), [recorded results](docs/validation.json), and [baseline misses](docs/baseline.json) are committed. The history sample exercises test skips, workflow failure handling, coverage thresholds, and explicit TypeScript strict settings; it does not establish coverage of every rule or syntax.
 
 ## Review your own changes
 
@@ -116,6 +134,7 @@ Only tracked text files are inspected. Binary files and working-tree symlinks ar
 
 ```sh
 python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s scripts -p 'test_*.py' -v
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). A useful contribution includes a small missed or misleading diff, expected behavior, and a regression test.

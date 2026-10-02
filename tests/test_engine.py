@@ -13,6 +13,115 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(findings[1].severity, "high")
         self.assertEqual(findings[0].side, "right")
 
+    def test_vitest_named_alias_conditional_skip(self):
+        before = "import { test as baseTest, expect } from 'vitest'\nconst test = baseTest\n"
+        after = "import { test as baseTest, expect } from 'vitest'\nconst test = baseTest.skipIf(!!process.env.ECOSYSTEM_CI)\n"
+        findings = self.findings("test/cli/test/list-changed.test.ts", before, after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 2)])
+        self.assertEqual(findings[0].before, "const test = baseTest")
+
+    def test_standard_conditional_modifiers(self):
+        after = "test.skipIf(disabled)('first', () => {});\nit.runIf(enabled)('second', () => {});\ndescribe.runIf(available)('suite', () => {});\n"
+        findings = self.findings("conditions.test.ts", after=after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 1), ("test-skip", 2), ("test-skip", 3)])
+
+    def test_imported_alias_skip_and_focus(self):
+        after = "import {\n test as check, // framework factory\n describe as group,\n it as example,\n} from \"vitest\"\ncheck.skip('x', () => {});\ngroup.only('suite', () => {});\nexample.runIf(enabled)('y', () => {});\n"
+        findings = self.findings("aliases.test.ts", after=after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 6), ("test-focus", 7), ("test-skip", 8)])
+
+    def test_vitest_runtime_context_skip_with_nested_helper(self):
+        after = "import { expect, test } from 'vitest'\ntest('clearScreen', async (ctx) => {\n  ctx.skip(!!rolldownVersion && ctx.task.file.projectName === 'vmThreads')\n  const results = examples.map(([a, b]) => { return a || b })\n  expect(results).toEqual([])\n})\n"
+        findings = self.findings("test/core/test/cli-test.test.ts", after=after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 3)])
+
+    def test_context_import_alias_single_parameter_and_condition_block(self):
+        after = "import { it as check } from 'vitest'\ncheck('name', context => {\n if (unsupported) { context.skip() }\n})\n"
+        findings = self.findings("context.test.ts", after=after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 3)])
+
+    def test_business_object_skip_is_not_a_test_marker(self):
+        after = "const businessObject = { skip() {} }\nbusinessObject.skip()\nbusinessObject.skipIf(true)\nanyObject.runIf(true)\n"
+        self.assertEqual(self.findings("business.test.ts", after=after), [])
+
+    def test_context_skip_outside_test_callback_is_ignored(self):
+        after = "import { test } from 'vitest'\nctx.skip(true)\nfunction helper(ctx) { ctx.skip() }\ntest('valid', () => {})\n"
+        self.assertEqual(self.findings("context.test.ts", after=after), [])
+
+    def test_context_requires_vitest_import_and_callback_parameter(self):
+        self.assertEqual(self.findings("context.test.ts", after="test('x', ctx => { ctx.skip() })"), [])
+        after = "import { test } from 'vitest'\ntest('x', other => { ctx.skip() })\n"
+        self.assertEqual(self.findings("context.test.ts", after=after), [])
+
+    def test_fake_imports_and_markers_in_fixtures_are_ignored(self):
+        after = "const fixture = `import { test as baseTest } from 'vitest'\nbaseTest.skipIf(true)\ntest('name', ctx => { ctx.skip() })`\nbaseTest.skipIf(true)\n"
+        self.assertEqual(self.findings("fixtures.test.ts", after=after), [])
+        after = '// import { it as check } from "vitest"\ncheck.skip()\n'
+        self.assertEqual(self.findings("fixtures.test.ts", after=after), [])
+
+    def test_non_vitest_namespace_and_type_only_imports_do_not_establish_aliases(self):
+        for statement in ("import { test as check } from 'business'", "import * as check from 'vitest'", "import type { test as check } from 'vitest'", "import { type test as check } from 'vitest'"):
+            with self.subTest(statement=statement):
+                self.assertEqual(self.findings("aliases.test.ts", after=statement + "\ncheck.skipIf(true)\n"), [])
+
+    def test_unbalanced_callback_does_not_extend_context_scope(self):
+        after = "import { test } from 'vitest'\ntest('name', ctx => {\n  something()\n)\nctx.skip()\n"
+        self.assertEqual(self.findings("context.test.ts", after=after), [])
+
+    def test_nested_helper_context_is_not_outer_test_context(self):
+        after = "import { test } from 'vitest'\ntest('name', ctx => {\n  const helper = ctx => ctx.skip()\n  const other = (ctx) => { ctx.skip() }\n  function business(ctx) { ctx.skip() }\n})\n"
+        self.assertEqual(self.findings("context.test.ts", after=after), [])
+
+    def test_reassigned_context_stays_out_of_scope(self):
+        after = "import { test } from 'vitest'\ntest('name', ctx => {\n  ctx = businessObject\n  ctx.skip()\n})\n"
+        self.assertEqual(self.findings("context.test.ts", after=after), [])
+
+    def test_context_comments_and_template_strings_are_ignored(self):
+        after = "import { test } from 'vitest'\ntest('name', ctx => {\n  // ctx.skip()\n  const example = `ctx.skip()`\n  const literal = 'ctx.skip()'\n})\n"
+        self.assertEqual(self.findings("context.test.ts", after=after), [])
+
+    def test_alias_markers_quiet_when_moved_or_binding_renamed(self):
+        before = "import { test as baseTest } from 'vitest'\nbaseTest.skipIf(disabled)('name', () => {})\n"
+        after = "import { test as check } from 'vitest'\n\ncheck . skipIf (disabled)('name', () => {})\n"
+        self.assertEqual(self.findings("aliases.test.ts", before, after), [])
+
+    def test_context_marker_quiet_when_moved_or_parameter_renamed(self):
+        before = "import { test } from 'vitest'\ntest('name', ctx => { ctx.skip() })\n"
+        after = "import { test } from 'vitest'\n\ntest('name', context => {\n context . skip ()\n})\n"
+        self.assertEqual(self.findings("context.test.ts", before, after), [])
+
+    def test_regular_expression_literals_are_not_quality_markers(self):
+        after = "import { test as check } from 'vitest'\nconst pattern = /check.skipIf/\nconst focus = /[\"']test.only/\nconst slash = /[\\/]describe.skip/\nfunction patternFactory() { return /check.skipIf/ }\n"
+        self.assertEqual(self.findings("regex.test.ts", after=after), [])
+
+    def test_regular_expression_context_example_is_not_a_skip(self):
+        after = "import { test } from 'vitest'\ntest('pattern', ctx => { const pattern = /ctx.skip()/ })\n"
+        self.assertEqual(self.findings("regex.test.ts", after=after), [])
+
+    def test_division_does_not_hide_executable_quality_markers(self):
+        after = "import { test as check } from 'vitest'\nconst ratio = value / check.skipIf(true) / denominator\n"
+        findings = self.findings("division.test.ts", after=after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 2)])
+        self.assertEqual(self.findings("division.test.ts", after='const ratio = value / "test.skip" / denominator\n'), [])
+
+    def test_shadowed_vitest_alias_parameters_are_not_framework_factories(self):
+        after = "import { test as check } from 'vitest'\nfunction business(check) { check.skipIf(true) }\nconst helper = (check) => { check.skip() }\nconst object = { method(check) { check.only() } }\ncheck.skipIf(disabled)\n"
+        findings = self.findings("shadow.test.ts", after=after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 5)])
+
+    def test_shadowed_test_factory_cannot_establish_a_vitest_context(self):
+        after = "import { test } from 'vitest'\nfunction business(test) { test('business', ctx => { ctx.skip() }) }\n"
+        self.assertEqual(self.findings("shadow.test.ts", after=after), [])
+
+    def test_nested_object_method_context_is_not_outer_test_context(self):
+        after = "import { test } from 'vitest'\ntest('name', ctx => {\n const object = { method(ctx) { ctx.skip() } }\n ctx.skip()\n})\n"
+        findings = self.findings("context.test.ts", after=after)
+        self.assertEqual([(f.rule_id, f.line) for f in findings], [("test-skip", 4)])
+
+    def test_nested_reassignment_keeps_entire_callback_out_of_scope(self):
+        after = "import { test } from 'vitest'\ntest('name', ctx => {\n ctx.skip()\n const helper = () => { ctx = businessObject }\n})\n"
+        self.assertEqual(self.findings("context.test.ts", after=after), [])
+
     def test_python_and_go_skips(self):
         python = self.findings("tests/test_math.py", after="import pytest\n@pytest.mark.skipif(True, reason='unsupported')\ndef test_math():\n    pytest.xfail('later')\n")
         self.assertEqual([f.line for f in python], [2, 4])

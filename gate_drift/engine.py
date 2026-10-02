@@ -80,7 +80,55 @@ def _blank(text: str) -> str:
 def _mask_js(text: str, strings: bool = True) -> str:
     """Mask comments and optionally literals while preserving line positions."""
     pattern = re.compile(r"//[^\n]*|/\*[\s\S]*?\*/|\"(?:\\[\s\S]|[^\"\\])*\"|'(?:\\[\s\S]|[^'\\])*'|`(?:\\[\s\S]|[^`\\])*`")
-    return pattern.sub(lambda match: _blank(match.group()) if strings or match.group().startswith(("//", "/*")) else match.group(), text)
+    identifier_pattern = re.compile(r"[A-Za-z_$][\w$]*")
+    output = list(text)
+    index = 0
+    previous = ""
+    regex_prefixes = {"", "=", "(", "[", "{", ":", ",", ";", "!", "?", "&", "|", "+", "-", "*", "%", "~", "^", "<", ">", "/", "return", "throw", "case", "yield", "await"}
+    while index < len(text):
+        char = text[index]
+        token = pattern.match(text, index) if char in "/\"'`" else None
+        if token:
+            comment = token.group().startswith(("//", "/*"))
+            if strings or comment:
+                output[index:token.end()] = _blank(token.group())
+            if not comment:
+                previous = "literal"
+            index = token.end()
+            continue
+        if char == "/" and previous in regex_prefixes:
+            cursor = index + 1
+            in_class = False
+            while cursor < len(text) and text[cursor] not in "\r\n":
+                if text[cursor] == "\\":
+                    cursor += 2
+                    continue
+                if text[cursor] == "[":
+                    in_class = True
+                elif text[cursor] == "]":
+                    in_class = False
+                elif text[cursor] == "/" and not in_class:
+                    cursor += 1
+                    while cursor < len(text) and text[cursor].isalpha():
+                        cursor += 1
+                    output[index:cursor] = _blank(text[index:cursor])
+                    previous = "literal"
+                    index = cursor
+                    break
+                cursor += 1
+            else:
+                previous = char
+                index += 1
+            continue
+        identifier = identifier_pattern.match(text, index) if char.isalpha() or char in "_$" else None
+        if identifier:
+            previous = identifier.group()
+            index = identifier.end()
+        else:
+            if not char.isspace():
+                previous = char
+            index += 1
+    return "".join(output)
 
 
 def _mask_python(text: str) -> str:
@@ -162,15 +210,202 @@ def _added(old: Iterable[_Occurrence], new: Iterable[_Occurrence]) -> list[_Occu
     return added
 
 
+def _vitest_imports(text: str, masked: str) -> dict[str, str]:
+    """Resolve only static named test/it/describe imports from literal vitest."""
+    imports = {}
+    comments_masked = _mask_js(text, strings=False)
+    pattern = r"\bimport\s*\{([^{}]*)\}\s*from\s*(['\"])vitest\2"
+    for match in re.finditer(pattern, comments_masked):
+        # Keeping module strings enables parsing imports, but an import-looking
+        # fixture string must never establish a real framework binding.
+        if masked[match.start():match.start() + 6] != "import":
+            continue
+        for specifier in match.group(1).split(","):
+            binding = re.fullmatch(r"\s*(test|it|describe)(?:\s+as\s+([A-Za-z_$][\w$]*))?\s*", specifier)
+            if binding:
+                original, alias = binding.groups()
+                imports[alias or original] = original
+    return imports
+
+
+def _delimiter_pairs(masked: str) -> dict[int, int]:
+    """Index balanced code delimiters; literals/comments have already vanished."""
+    pairs = {}
+    stack = []
+    closing = {")": "(", "]": "[", "}": "{"}
+    for index, char in enumerate(masked):
+        if char in "([{":
+            stack.append((char, index))
+        elif char in closing:
+            if stack and stack[-1][0] == closing[char]:
+                _, start = stack.pop()
+                pairs[start] = index
+            else:
+                # A malformed outer construct must not leak a callback scope.
+                stack.clear()
+    return pairs
+
+
+def _argument_spans(masked: str, start: int, end: int, pairs: dict[int, int]) -> list[tuple[int, int]]:
+    """Split a balanced call at top-level commas only."""
+    arguments = []
+    argument_start = start + 1
+    index = argument_start
+    while index < end:
+        if masked[index] in "([{":
+            closing = pairs.get(index)
+            if closing is None or closing >= end:
+                return []
+            index = closing + 1
+        elif masked[index] == ",":
+            arguments.append((argument_start, index))
+            argument_start = index + 1
+            index += 1
+        else:
+            index += 1
+    arguments.append((argument_start, end))
+    return arguments
+
+
+def _nested_function_spans(masked: str, start: int, end: int, pairs: dict[int, int]) -> list[tuple[int, int]]:
+    """Exclude simple nested function bodies from a test context's scope."""
+    spans = []
+    for match in re.finditer(r"=>|\bfunction(?:\s+[A-Za-z_$][\w$]*)?\s*(\()", masked[start:end]):
+        cursor = start + match.end()
+        if match.group(1):
+            parameter_end = pairs.get(start + match.start(1))
+            if parameter_end is None:
+                continue
+            cursor = parameter_end + 1
+        while cursor < end and masked[cursor].isspace():
+            cursor += 1
+        if cursor < end and masked[cursor] == "{":
+            body_end = pairs.get(cursor)
+            if body_end is not None and body_end < end:
+                spans.append((cursor, body_end + 1))
+        elif not match.group(1):
+            expression_start = cursor
+            while cursor < end:
+                if masked[cursor] in "([{" and cursor in pairs:
+                    cursor = pairs[cursor] + 1
+                elif masked[cursor] in ",;)}]":
+                    break
+                else:
+                    cursor += 1
+            spans.append((expression_start, cursor))
+    return spans
+
+
+def _parameter_scopes(masked: str, pairs: dict[int, int]):
+    """Recognize simple function/method/arrow parameter lists and bodies."""
+    controls = {"if", "for", "while", "switch", "catch", "with"}
+    for match in re.finditer(r"\b([A-Za-z_$][\w$]*)\s*(\()", masked):
+        if match.group(1) in controls:
+            continue
+        parameter_start = match.start(2)
+        parameter_end = pairs.get(parameter_start)
+        if parameter_end is None:
+            continue
+        cursor = parameter_end + 1
+        while cursor < len(masked) and masked[cursor].isspace():
+            cursor += 1
+        if cursor < len(masked) and masked[cursor] == "{" and cursor in pairs:
+            yield masked[parameter_start + 1:parameter_end], cursor, pairs[cursor] + 1
+    arrow = r"(?:\(([^()]*)\)|([A-Za-z_$][\w$]*))\s*=>\s*(\{)"
+    for match in re.finditer(arrow, masked):
+        body_start = match.start(3)
+        if body_start in pairs:
+            yield match.group(1) or match.group(2) or "", body_start, pairs[body_start] + 1
+
+
+def _shadowed_import_scopes(masked: str, imports: dict[str, str], pairs: dict[int, int]):
+    scopes = []
+    for parameters, start, end in _parameter_scopes(masked, pairs):
+        names = {parameter.strip() for parameter in parameters.split(",") if re.fullmatch(r"\s*[A-Za-z_$][\w$]*\s*", parameter)}
+        shadowed = names & imports.keys()
+        if shadowed:
+            scopes.append((start, end, shadowed))
+    return scopes
+
+
+def _vitest_context_skips(text: str, masked: str, imports: dict[str, str]) -> list[_Occurrence]:
+    # Context.skip is a Vitest feature. Require evidence that the factory comes
+    # from Vitest instead of guessing from an object called ctx or test.
+    factories = sorted(alias for alias, original in imports.items() if original in {"test", "it"})
+    if not factories:
+        return []
+    names = "|".join(re.escape(name) for name in factories)
+    calls = re.finditer(rf"(?<![\w$.])(?P<factory>{names})(?:\s*\.\s*(?:skip|only))?\s*(\()", masked)
+    pairs = _delimiter_pairs(masked)
+    shadowed_imports = _shadowed_import_scopes(masked, imports, pairs)
+    method_scopes = list(_parameter_scopes(masked, pairs))
+    result = []
+    seen = set()
+    callback = re.compile(r"\s*(?:async\s+)?(?:\(\s*([A-Za-z_$][\w$]*)\s*\)|([A-Za-z_$][\w$]*))\s*=>\s*(\{)")
+    for call in calls:
+        if any(start <= call.start() < end and call.group("factory") in names for start, end, names in shadowed_imports):
+            continue
+        # The unnamed call parenthesis follows the named factory group.
+        call_start = call.start(2)
+        call_end = pairs.get(call_start)
+        if call_end is None:
+            continue
+        for start, end in _argument_spans(masked, call_start, call_end, pairs)[1:]:
+            arrow = callback.match(masked, start, end)
+            if not arrow:
+                continue
+            context = arrow.group(1) or arrow.group(2)
+            body_start = arrow.start(3)
+            body_end = pairs.get(body_start)
+            if body_end is None or body_end >= end or masked[body_end + 1:end].strip():
+                continue
+            body = masked[body_start + 1:body_end]
+            # Resolve the direct callback context only. Nested helper callbacks
+            # can shadow its name; they are not evidence about this binding.
+            nested = _nested_function_spans(masked, body_start + 1, body_end, pairs)
+            nested.extend((start, end) for _, start, end in method_scopes if body_start < start < end <= body_end)
+            if re.search(rf"\b(?:const|let|var|class)\s+{re.escape(context)}\b|\b{re.escape(context)}\s*=(?!=|>)", body):
+                continue
+            for skip in re.finditer(rf"(?<![\w$.]){re.escape(context)}\s*\.\s*(skip)\s*(?=\()", body):
+                offset = body_start + 1 + skip.start(1)
+                if offset in seen or any(start <= offset < end for start, end in nested):
+                    continue
+                seen.add(offset)
+                number = _line(text, offset)
+                # Renaming a callback parameter or moving it does not create a
+                # new skip. Count the established context operation per file.
+                result.append(_Occurrence("vitest-context.skip", number, _line_text(text, number)))
+    return result
+
+
+def _js_test_markers(text: str) -> dict[str, list[_Occurrence]]:
+    masked = _mask_js(text)
+    imports = _vitest_imports(text, masked)
+    shadowed_imports = _shadowed_import_scopes(masked, imports, _delimiter_pairs(masked)) if imports else []
+    names = "|".join(re.escape(name) for name in sorted({"it", "test", "describe"} | set(imports)))
+    result = {
+        "test-skip": _matches(text, masked, r"(?<![\w$.])(?:xit|xtest|xdescribe)\b\s*(?=\()"),
+        "test-focus": [],
+    }
+    for match in re.finditer(rf"(?<![\w$.])(?P<name>{names})\s*\.\s*(?P<marker>skipIf|runIf|skip|only)\b", masked):
+        if any(start <= match.start() < end and match.group("name") in names for start, end, names in shadowed_imports):
+            continue
+        marker = match.group("marker")
+        canonical = imports.get(match.group("name"), match.group("name"))
+        number = _line(text, match.start("marker"))
+        occurrence = _Occurrence(f"{canonical}.{marker}", number, _line_text(text, number))
+        result["test-focus" if marker == "only" else "test-skip"].append(occurrence)
+    result["test-skip"].extend(_vitest_context_skips(text, masked, imports))
+    for occurrences in result.values():
+        occurrences.sort(key=lambda item: (item.line, item.signature))
+    return result
+
+
 def _test_markers(path: str, text: str) -> dict[str, list[_Occurrence]]:
     if not _is_test(path):
         return {}
     if path.endswith(_JS_EXTENSIONS):
-        masked = _mask_js(text)
-        return {
-            "test-skip": _matches(text, masked, r"(?<![\w$.])(?:(?:it|test|describe)\s*\.\s*skip\b|(?:xit|xtest|xdescribe)\b\s*(?=\())"),
-            "test-focus": _matches(text, masked, r"(?<![\w$.])(?:it|test|describe)\s*\.\s*only\b"),
-        }
+        return _js_test_markers(text)
     if path.endswith(".py"):
         return {"test-skip": _matches(text, _mask_python(text), r"\b(?:pytest\s*\.\s*(?:mark\s*\.\s*(?:skipif|skip|xfail)|skip|xfail)|unittest\s*\.\s*(?:skipIf|skipUnless|skip)|self\s*\.\s*skipTest)\b")}
     if path.endswith(".go"):

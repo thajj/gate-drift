@@ -8,17 +8,20 @@ The scanner compares the before and after text of changed, tracked files. For ad
 
 Reports newly added skipping or expected-failure markers in recognized test files:
 
-- JavaScript and TypeScript: `it.skip`, `test.skip`, `describe.skip`, `xit(...)`, `xtest(...)`, and `xdescribe(...)`.
+- JavaScript and TypeScript: `it.skip`, `test.skip`, `describe.skip`, their `skipIf` and `runIf` modifiers, `xit(...)`, `xtest(...)`, and `xdescribe(...)`. Static named imports of `test`, `it`, or `describe` from the literal module `vitest` also establish aliases, such as `import { test as baseTest } from 'vitest'` followed by `baseTest.skipIf(condition)`.
+- Vitest test contexts: `context.skip(...)` inside a recognized `test` or `it` call with a simple arrow callback whose single parameter names that context. The test factory must be a static named import from `vitest`; a method on an arbitrary object named `ctx` is not sufficient.
 - Python: `pytest.mark.skip`, `pytest.mark.skipif`, `pytest.mark.xfail`, `pytest.skip`, `pytest.xfail`, `unittest.skip`, `unittest.skipIf`, `unittest.skipUnless`, and `self.skipTest`.
 - Go: `t.Skip`, `t.Skipf`, `t.SkipNow`, and the same calls on a variable named `tb`.
 
-Comments and string literals are masked before matching. Conditional skips and expected failures are still review signals; Gate Drift does not evaluate their condition, justification, or framework settings. Aliases and custom skip wrappers are not resolved.
+Comments, string literals, and fixture template strings are masked before matching. Conditional skips and expected failures are still review signals; Gate Drift does not evaluate their condition, justification, or framework settings. The Vitest extension handles static named imports and simple arrow callbacks with balanced call and body delimiters. Context calls inside nested helper functions, reassigned contexts, destructured or typed callback parameters, curried conditional callbacks, namespace/default imports, computed properties, and custom wrappers are outside this limited syntax. This is a text scanner with bounded callback scopes, not a full JavaScript or TypeScript syntax tree or binding analysis.
+
+Common regular-expression literals are masked using expression context. Simple parameter shadows and nested method bodies are excluded, but unusual regex/division positions, factory rebinding, and more complex lexical scopes can still be misclassified. Reassigning the context anywhere in a callback body, including a nested helper, conservatively excludes that entire callback and can hide an otherwise recognizable skip.
 
 ## `test-focus` — high
 
-Reports new `it.only`, `test.only`, or `describe.only` markers in recognized JavaScript or TypeScript test files. A focused selection can stop the rest of a suite from running.
+Reports new `it.only`, `test.only`, or `describe.only` markers in recognized JavaScript or TypeScript test files, including aliases established by static named imports from `vitest`. A focused selection can stop the rest of a suite from running.
 
-Aliases, custom wrappers, and other frameworks' focus syntax are not supported.
+Other alias forms, custom wrappers, and other frameworks' focus syntax are not supported.
 
 ## `deleted-test-file` — high
 
