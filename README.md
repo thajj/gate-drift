@@ -27,7 +27,17 @@ python3 -m gate_drift --demo --html gate-drift-report.html --no-fail
 
 Open `gate-drift-report.html` in a browser. The demo uses synthetic changes and inspects no real repository. No install, account, model, or API key is needed.
 
+Prefer a ZIP? Download `gate-drift-0.1.1.zip` from [release v0.1.1](https://github.com/thajj/gate-drift/releases/tag/v0.1.1), extract it, and open a terminal in the extracted `gate-drift-0.1.1` folder. Run the same Python demo command above; cloning and installation are optional.
+
 ![Synthetic Gate Drift report](docs/demo.jpg)
+
+To review your own project, run this from the Gate Drift folder:
+
+```sh
+python3 -m gate_drift --repo /path/to/project --html review.html --no-fail
+```
+
+This compares tracked staged and unstaged changes with your project's `HEAD`. Open `review.html` to inspect the findings. [More comparison options](#review-your-own-changes) are below.
 
 ## Evidence from real repositories
 
