@@ -40,7 +40,7 @@ class CliTests(unittest.TestCase):
 
     def git(self, repo, *args):
         return subprocess.run(
-            ["git", "-C", str(repo), *args], capture_output=True,
+            ["git", "-c", "gc.auto=0", "-c", "maintenance.auto=false", "-C", str(repo), *args], capture_output=True,
             text=True, check=True,
         ).stdout.strip()
 

@@ -24,7 +24,7 @@ class GitSnapshotTests(unittest.TestCase):
 
     def git(self, *args):
         result = subprocess.run(
-            ["git", "-C", str(self.repo), *args], capture_output=True,
+            ["git", "-c", "gc.auto=0", "-c", "maintenance.auto=false", "-C", str(self.repo), *args], capture_output=True,
             text=True, check=True,
         )
         return result.stdout.strip()
