@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gate-drift"
+version = "0.1.0"
+description = "Review Git changes that weaken tests, coverage, CI workflows, and type checks."
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Toufic Hajj"}]
+readme = "README.md"
+dependencies = []
+
+[project.scripts]
+gate-drift = "gate_drift.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/thajj/gate-drift"
+Issues = "https://github.com/thajj/gate-drift/issues"
+
+[tool.setuptools]
+packages = ["gate_drift"]
