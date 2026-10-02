@@ -1,0 +1,1608 @@
+{
+  "tool_version": "0.1.1",
+  "tool_commit": "c26ad9efebadcca147fd20b964b24fca7acf72f3",
+  "working_tree_dirty": false,
+  "dataset_date": "2026-10-02",
+  "method": "Forty latest first-parent transitions at frozen pytest/Vitest heads, selected before running the tool and labeled in a separate AI review pass without detector output. Ten separate curated historical comparisons include two configuration-file-only cases. Rules were expanded after three baseline misses; current labels cover the expanded scope. These are project-authored regression cases, not held-out accuracy evidence or estimates of real-world frequencies.",
+  "total": 50,
+  "passed": 50,
+  "errors": 0,
+  "expected_sites": 11,
+  "emitted_sites": 11,
+  "results": [
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "base": "b1de564f337c63db919a65253b931dd099909618",
+      "url": "https://github.com/pytest-dev/pytest/commit/2887015cade4757385308e7a7d8083557fc637e2",
+      "subject": "[pre-commit.ci] pre-commit autoupdate (#15077)",
+      "date": "2026-09-29T09:05:47+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Ruff pre-commit revision update only; no supported gate syntax or threshold change.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "b1de564f337c63db919a65253b931dd099909618",
+        "head": "2887015cade4757385308e7a7d8083557fc637e2",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "b1de564f337c63db919a65253b931dd099909618",
+      "base": "24e7f30b020f5d2981106cd1927669af3e2daa8e",
+      "url": "https://github.com/pytest-dev/pytest/commit/b1de564f337c63db919a65253b931dd099909618",
+      "subject": "build(deps): Bump pytest-rerunfailures in /testing/plugins_integration (#15110)",
+      "date": "2026-09-28T06:59:26+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "pytest-rerunfailures dependency version bump only.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "24e7f30b020f5d2981106cd1927669af3e2daa8e",
+        "head": "b1de564f337c63db919a65253b931dd099909618",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "24e7f30b020f5d2981106cd1927669af3e2daa8e",
+      "base": "c333125d977b323fafbeb0e09cd86e203ab4af39",
+      "url": "https://github.com/pytest-dev/pytest/commit/24e7f30b020f5d2981106cd1927669af3e2daa8e",
+      "subject": "build(deps): Bump codecov/codecov-action from 7.1.0 to 7.1.1 (#15111)",
+      "date": "2026-09-28T06:58:57+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Codecov action revision update only. Existing fail_ci_if_error: false is unchanged context and is outside the continue-on-error rule.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "c333125d977b323fafbeb0e09cd86e203ab4af39",
+        "head": "24e7f30b020f5d2981106cd1927669af3e2daa8e",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "c333125d977b323fafbeb0e09cd86e203ab4af39",
+      "base": "8721173580390a9d297e5af06cac3f0b6841f425",
+      "url": "https://github.com/pytest-dev/pytest/commit/c333125d977b323fafbeb0e09cd86e203ab4af39",
+      "subject": "[automated] Update plugin list (#15107)",
+      "date": "2026-09-27T05:12:40Z",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Only the generated plugin-list .rst documentation changed; no file is in a supported rule scope.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "8721173580390a9d297e5af06cac3f0b6841f425",
+        "head": "c333125d977b323fafbeb0e09cd86e203ab4af39",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "8721173580390a9d297e5af06cac3f0b6841f425",
+      "base": "f9554ee56d264da285f3951ebfdf6f1d59ba4077",
+      "url": "https://github.com/pytest-dev/pytest/commit/8721173580390a9d297e5af06cac3f0b6841f425",
+      "subject": "testing: ignore Cython's PyPy collection_type warning (#15096)",
+      "date": "2026-09-24T09:25:06+02:00",
+      "expected": [],
+      "unsupported": [
+        "pyproject.toml adds ignore:cython.collection_type only works on PyPy:RuntimeWarning to pytest filterwarnings. Warning-filter relaxation is outside the documented rules; no claim that the filter is inappropriate."
+      ],
+      "notes": "Adds a RuntimeWarning filter for a Cython/PyPy issue. This is not a numeric coverage threshold, a recognized skip marker, or another supported gate.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "f9554ee56d264da285f3951ebfdf6f1d59ba4077",
+        "head": "8721173580390a9d297e5af06cac3f0b6841f425",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "f9554ee56d264da285f3951ebfdf6f1d59ba4077",
+      "base": "6a9ba0f02f827a54cff6ab4da0dddecd65444ff6",
+      "url": "https://github.com/pytest-dev/pytest/commit/f9554ee56d264da285f3951ebfdf6f1d59ba4077",
+      "subject": "Fix doctest option flags leaking between docstrings (#15033)",
+      "date": "2026-09-23T00:29:41-07:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Doctest optionflags restoration and added regression tests. The skip/xfail fixture action is inside a triple-quoted f-string, not a new actual test marker; the Python type-ignore comment on runner.run was moved, not newly introduced.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "6a9ba0f02f827a54cff6ab4da0dddecd65444ff6",
+        "head": "f9554ee56d264da285f3951ebfdf6f1d59ba4077",
+        "files_inspected": 3,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "6a9ba0f02f827a54cff6ab4da0dddecd65444ff6",
+      "base": "f12c34b5efb3e2b0f349375c780dc3e6b462fa4f",
+      "url": "https://github.com/pytest-dev/pytest/commit/6a9ba0f02f827a54cff6ab4da0dddecd65444ff6",
+      "subject": "[automated] Update plugin list (#15066)",
+      "date": "2026-09-21T13:25:49Z",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Only the generated plugin-list .rst documentation changed; no file is in a supported rule scope.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "f12c34b5efb3e2b0f349375c780dc3e6b462fa4f",
+        "head": "6a9ba0f02f827a54cff6ab4da0dddecd65444ff6",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "f12c34b5efb3e2b0f349375c780dc3e6b462fa4f",
+      "base": "79833c82b92409dd74c9236c59b8b18970d026e0",
+      "url": "https://github.com/pytest-dev/pytest/commit/f12c34b5efb3e2b0f349375c780dc3e6b462fa4f",
+      "subject": "Clarify the relation between marks and keywords (#15011)",
+      "date": "2026-09-21T12:34:05+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Marker/keyword matching changes and added regression tests. Existing pytest.mark.xfail is unchanged context. Previously commented keyword assertions become active; no new supported skip/focus marker.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "79833c82b92409dd74c9236c59b8b18970d026e0",
+        "head": "f12c34b5efb3e2b0f349375c780dc3e6b462fa4f",
+        "files_inspected": 14,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "79833c82b92409dd74c9236c59b8b18970d026e0",
+      "base": "6a0de9be56365e75ff30d75cee9654739ca95f97",
+      "url": "https://github.com/pytest-dev/pytest/commit/79833c82b92409dd74c9236c59b8b18970d026e0",
+      "subject": "build(deps): Bump codecov/codecov-action from 7.0.0 to 7.1.0 (#15070)",
+      "date": "2026-09-21T10:53:01+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Codecov action revision update only; unchanged fail_ci_if_error context does not count as a new gate.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "6a0de9be56365e75ff30d75cee9654739ca95f97",
+        "head": "79833c82b92409dd74c9236c59b8b18970d026e0",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "6a0de9be56365e75ff30d75cee9654739ca95f97",
+      "base": "7d90c44cca8f2e37dc0ab3d9643a4672a8a3f7f9",
+      "url": "https://github.com/pytest-dev/pytest/commit/6a0de9be56365e75ff30d75cee9654739ca95f97",
+      "subject": "Warn when writing or closing a cache file fails (#15044)",
+      "date": "2026-09-17T23:25:34-07:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Cache write error handling expands to cover write/close failures and adds regression tests; no supported gate marker or threshold change.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "7d90c44cca8f2e37dc0ab3d9643a4672a8a3f7f9",
+        "head": "6a0de9be56365e75ff30d75cee9654739ca95f97",
+        "files_inspected": 4,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "7d90c44cca8f2e37dc0ab3d9643a4672a8a3f7f9",
+      "base": "56a92c19d4a71152c594726efc9deb5f0e126e99",
+      "url": "https://github.com/pytest-dev/pytest/commit/7d90c44cca8f2e37dc0ab3d9643a4672a8a3f7f9",
+      "subject": "Merge pull request #15057 from bluetech/rm-dead-code",
+      "date": "2026-09-17T18:54:24+03:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Removes redundant fixture enumeration bookkeeping from implementation source; no supported gate change.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "56a92c19d4a71152c594726efc9deb5f0e126e99",
+        "head": "7d90c44cca8f2e37dc0ab3d9643a4672a8a3f7f9",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "56a92c19d4a71152c594726efc9deb5f0e126e99",
+      "base": "99ab2acccff15f757260a1e1fbb0d2a47fc01041",
+      "url": "https://github.com/pytest-dev/pytest/commit/56a92c19d4a71152c594726efc9deb5f0e126e99",
+      "subject": "Merge pull request #15053 from bluetech/showfixtures-item-lineno",
+      "date": "2026-09-17T15:33:36+03:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Fixes fixture location line numbers and updates output expectations. Changed testing/python/fixtures.py and show_fixtures_per_test.py do not match documented test filename patterns; their additions are expected-output strings, not skip markers anyway.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "99ab2acccff15f757260a1e1fbb0d2a47fc01041",
+        "head": "56a92c19d4a71152c594726efc9deb5f0e126e99",
+        "files_inspected": 4,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "99ab2acccff15f757260a1e1fbb0d2a47fc01041",
+      "base": "affb9c4cdc729da46c03b0de2ec17ab3e31c1e65",
+      "url": "https://github.com/pytest-dev/pytest/commit/99ab2acccff15f757260a1e1fbb0d2a47fc01041",
+      "subject": "Merge pull request #14972 from bluetech/testing-fix",
+      "date": "2026-09-16T16:40:11+03:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Adds environment-variable cleanup to an existing assertion-rewrite regression test. No new supported skip marker or other gate change.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "affb9c4cdc729da46c03b0de2ec17ab3e31c1e65",
+        "head": "99ab2acccff15f757260a1e1fbb0d2a47fc01041",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "affb9c4cdc729da46c03b0de2ec17ab3e31c1e65",
+      "base": "f8ad1f6f95307ed5b7da9b73f1c585695bf2b51a",
+      "url": "https://github.com/pytest-dev/pytest/commit/affb9c4cdc729da46c03b0de2ec17ab3e31c1e65",
+      "subject": "Merge pull request #14157 from test-flare/main",
+      "date": "2026-09-16T08:34:32+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Only .rst flaky-test documentation/changelog changed. Discussion of rerun/skip practices in prose is not executable gate syntax.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "f8ad1f6f95307ed5b7da9b73f1c585695bf2b51a",
+        "head": "affb9c4cdc729da46c03b0de2ec17ab3e31c1e65",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "f8ad1f6f95307ed5b7da9b73f1c585695bf2b51a",
+      "base": "a453d653f92bfbdbfe47d2af9bfd8801860ff9e3",
+      "url": "https://github.com/pytest-dev/pytest/commit/f8ad1f6f95307ed5b7da9b73f1c585695bf2b51a",
+      "subject": "Merge pull request #14989 from 15r10nk/fix-stale-cached-bytecode-on-file-move",
+      "date": "2026-09-16T07:50:51+02:00",
+      "expected": [
+        {
+          "rule_id": "test-skip",
+          "path": "testing/test_assertrewrite.py",
+          "line": 1185,
+          "side": "right",
+          "reason": "Adds an actual pytest.skip call in a recognized test file, conditionally skipping the import-lib parametrization when _imp._fix_co_filename is unavailable."
+        }
+      ],
+      "unsupported": [
+        "src/_pytest/assertion/rewrite.py and testing/test_assertrewrite.py add Python # type: ignore[attr-defined] comments. Python type-check suppression is not supported by the TypeScript suppression rule.",
+        "src/_pytest/assertion/rewrite.py and testing/test_assertrewrite.py add # pragma: no cover comments for unavailable-helper paths. Coverage exclusion directives are outside the numeric coverage-threshold rule."
+      ],
+      "notes": "Adds regression coverage for moved assertion-rewrite bytecode and a pure-Python fallback. New real pytest.skip is conditional on a missing optional interpreter helper; the next existing pytest.mark.skipif is unchanged context. This supported finding is an intentional portability exclusion, not evidence of a defect.",
+      "findings": [
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "testing/test_assertrewrite.py",
+          "line": 1185,
+          "side": "right",
+          "before": "",
+          "after": "pytest.skip(",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        }
+      ],
+      "metadata": {
+        "repository": "pytest",
+        "base": "a453d653f92bfbdbfe47d2af9bfd8801860ff9e3",
+        "head": "f8ad1f6f95307ed5b7da9b73f1c585695bf2b51a",
+        "files_inspected": 3,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "a453d653f92bfbdbfe47d2af9bfd8801860ff9e3",
+      "base": "fe9eef7ebc62042f26edfca2b922e08c33180ed5",
+      "url": "https://github.com/pytest-dev/pytest/commit/a453d653f92bfbdbfe47d2af9bfd8801860ff9e3",
+      "subject": "Merge pull request #15032 from RonnyPfannschmidt/fix/help-text-wrapping",
+      "date": "2026-09-15T20:41:32+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Help formatter implementation and regression tests change. Mentions of skipping expensive validation are test help-string contents, not executable skip markers.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "fe9eef7ebc62042f26edfca2b922e08c33180ed5",
+        "head": "a453d653f92bfbdbfe47d2af9bfd8801860ff9e3",
+        "files_inspected": 5,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "fe9eef7ebc62042f26edfca2b922e08c33180ed5",
+      "base": "53bc06b9933eb50b40cd904aa50bcd1b6cf2a49c",
+      "url": "https://github.com/pytest-dev/pytest/commit/fe9eef7ebc62042f26edfca2b922e08c33180ed5",
+      "subject": "Merge pull request #14956 from pytest-dev/dependabot/github_actions/re-actors/alls-green-b5b5b37504aa4183270bd3d855c52a67f212be35",
+      "date": "2026-09-15T12:47:11+03:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "alls-green GitHub Action revision update only; no continue-on-error or check-swallow change.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "53bc06b9933eb50b40cd904aa50bcd1b6cf2a49c",
+        "head": "fe9eef7ebc62042f26edfca2b922e08c33180ed5",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "53bc06b9933eb50b40cd904aa50bcd1b6cf2a49c",
+      "base": "de30d8417f3d93bc0c16fc0a64092e197c46e36a",
+      "url": "https://github.com/pytest-dev/pytest/commit/53bc06b9933eb50b40cd904aa50bcd1b6cf2a49c",
+      "subject": "[pre-commit.ci] pre-commit autoupdate (#15027)",
+      "date": "2026-09-14T22:15:02Z",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Pre-commit tool revision bumps only (Ruff, zizmor, pyright). No supported gate setting changed.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "de30d8417f3d93bc0c16fc0a64092e197c46e36a",
+        "head": "53bc06b9933eb50b40cd904aa50bcd1b6cf2a49c",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "de30d8417f3d93bc0c16fc0a64092e197c46e36a",
+      "base": "aceb21ab2fa19f91282adfdb978a6ae252b3b020",
+      "url": "https://github.com/pytest-dev/pytest/commit/de30d8417f3d93bc0c16fc0a64092e197c46e36a",
+      "subject": "Merge pull request #15023 from RonnyPfannschmidt/packaging/git-archival",
+      "date": "2026-09-14T18:37:45+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Git archive/setuptools-scm packaging setup changes only; pyproject changes are build/version metadata, not coverage thresholds.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "aceb21ab2fa19f91282adfdb978a6ae252b3b020",
+        "head": "de30d8417f3d93bc0c16fc0a64092e197c46e36a",
+        "files_inspected": 5,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "pytest-dev/pytest",
+      "frozen_head": "2887015cade4757385308e7a7d8083557fc637e2",
+      "head": "aceb21ab2fa19f91282adfdb978a6ae252b3b020",
+      "base": "efc38328c97040702f6c71a57516a009c438435f",
+      "url": "https://github.com/pytest-dev/pytest/commit/aceb21ab2fa19f91282adfdb978a6ae252b3b020",
+      "subject": "Merge pull request #14984 from bluetech/arg2node2fixturedef",
+      "date": "2026-09-14T11:24:52+03:00",
+      "expected": [],
+      "unsupported": [
+        "tox.ini changes an active pytest bdd_wallet.py command to a semicolon-commented command, with an explanation that fixture-index refactoring currently breaks it. Commenting out an individual check command is unsupported; swallowed-check only handles recognized failure-swallow syntax in GitHub Actions or package.json."
+      ],
+      "notes": "Fixture lookup/index refactoring and regression tests; tuple expectation becomes list expectation. tox.ini comments out a broken integration check, which is a real check-disable change outside current detector scope.",
+      "findings": [],
+      "metadata": {
+        "repository": "pytest",
+        "base": "efc38328c97040702f6c71a57516a009c438435f",
+        "head": "aceb21ab2fa19f91282adfdb978a6ae252b3b020",
+        "files_inspected": 5,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "base": "af903c65e4d192b7bf2b788a7910b93cfe4c59f4",
+      "url": "https://github.com/vitest-dev/vitest/commit/4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "subject": "fix(runner): don't cache failed fixture setups (fix #11237) (#11238)",
+      "date": "2026-10-02T17:26:34+03:30",
+      "expected": [],
+      "unsupported": [
+        "test/unit/test/fixture-retry.test.ts adds retry: 1 to a newly added flaky regression test; test/e2e/test/fixture-failed-setup.test.ts contains retry: 1 in fixture template source. Retries are not a baseline supported rule, and this commit tests retry behavior rather than weakening an existing test."
+      ],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Fixture setup error handling is fixed and new retry regressions are added. Retry configuration is intentional test coverage; there is no added supported skip/focus/directive or weakened recognized numeric gate.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "af903c65e4d192b7bf2b788a7910b93cfe4c59f4",
+        "head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+        "files_inspected": 3,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "af903c65e4d192b7bf2b788a7910b93cfe4c59f4",
+      "base": "a627be498c33f9cb3307e7b99869dc8ad74caa36",
+      "url": "https://github.com/vitest-dev/vitest/commit/af903c65e4d192b7bf2b788a7910b93cfe4c59f4",
+      "subject": "fix(ui): store module graph once per environment (#11421)",
+      "date": "2026-10-02T22:24:59+09:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Module graph serialization changes and added round-trip assertions. Snapshot string content is fixture data, and existing tests remain present.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "a627be498c33f9cb3307e7b99869dc8ad74caa36",
+        "head": "af903c65e4d192b7bf2b788a7910b93cfe4c59f4",
+        "files_inspected": 7,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "a627be498c33f9cb3307e7b99869dc8ad74caa36",
+      "base": "b4e79fd7a3c75714b6ff2554f0176264ee1d4e57",
+      "url": "https://github.com/vitest-dev/vitest/commit/a627be498c33f9cb3307e7b99869dc8ad74caa36",
+      "subject": "fix(ui): simplify explorer filtering + fix nested tests when search matches a suite (#11262)",
+      "date": "2026-10-02T22:23:32+09:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. UI filtering and expansion refactor with added UI regression assertions. filter.onlyTests selects UI display content and slowTestThreshold classifies display timing; neither is test focus or a coverage gate.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "b4e79fd7a3c75714b6ff2554f0176264ee1d4e57",
+        "head": "a627be498c33f9cb3307e7b99869dc8ad74caa36",
+        "files_inspected": 7,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "b4e79fd7a3c75714b6ff2554f0176264ee1d4e57",
+      "base": "b0f2b3bb9d81007cc10390da5d802e5d673e7b9e",
+      "url": "https://github.com/vitest-dev/vitest/commit/b4e79fd7a3c75714b6ff2554f0176264ee1d4e57",
+      "subject": "fix(expect): fix `Map` and `Set` deep equality in some assertions (#11402)",
+      "date": "2026-10-02T22:22:24+09:00",
+      "expected": [],
+      "unsupported": [
+        "test/unit/test/expect.test.ts removes one repeated toHaveBeenCalledWith(person1) assertion while revising remaining equality assertions and adding coverage. Individual assertion deletion or matcher changes are outside the deleted-test-file rule."
+      ],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Map/Set equality fixes and new matcher regression assertions. Individual assertion replacement/removal falls outside the documented rules; no full test file is deleted.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "b0f2b3bb9d81007cc10390da5d802e5d673e7b9e",
+        "head": "b4e79fd7a3c75714b6ff2554f0176264ee1d4e57",
+        "files_inspected": 6,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "b0f2b3bb9d81007cc10390da5d802e5d673e7b9e",
+      "base": "eba44926eddd8947184c65de8a7aa7499ef82163",
+      "url": "https://github.com/vitest-dev/vitest/commit/b0f2b3bb9d81007cc10390da5d802e5d673e7b9e",
+      "subject": "fix: track project files and mocks with --changed (#11432)",
+      "date": "2026-10-02T14:56:43+02:00",
+      "expected": [],
+      "unsupported": [
+        "test/e2e/test/git-changed.test.ts, test/e2e/test/setup-files.test.ts and other related tests replace fixed no-test output assertions with a regex accepting changed/affected variants. Individual assertion semantics and dynamic affected-test selection are outside the supported rules."
+      ],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Affected-module dependency selection and static mock tracking are expanded, with new --changed/related regression tests. Test-selection implementation and fixture template strings are distinguished from actual source directives. No supported new signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "eba44926eddd8947184c65de8a7aa7499ef82163",
+        "head": "b0f2b3bb9d81007cc10390da5d802e5d673e7b9e",
+        "files_inspected": 23,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "eba44926eddd8947184c65de8a7aa7499ef82163",
+      "base": "e1a73147055d5a6ad02ad166c3a772b6d81c4898",
+      "url": "https://github.com/vitest-dev/vitest/commit/eba44926eddd8947184c65de8a7aa7499ef82163",
+      "subject": "fix(pretty-format): support boxed symbols (fix #11445) (#11446)",
+      "date": "2026-10-02T14:00:44+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Boxed symbol formatting is implemented and checked by a new assertion test. No supported signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "e1a73147055d5a6ad02ad166c3a772b6d81c4898",
+        "head": "eba44926eddd8947184c65de8a7aa7499ef82163",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "e1a73147055d5a6ad02ad166c3a772b6d81c4898",
+      "base": "ad208cc2911a0b48a6afae8bcae2f67de1393089",
+      "url": "https://github.com/vitest-dev/vitest/commit/e1a73147055d5a6ad02ad166c3a772b6d81c4898",
+      "subject": "fix(reporters): junit to strip ANSI sequences from all XML attributes (#11407)",
+      "date": "2026-10-02T10:30:19+09:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. JUnit XML attributes strip ANSI sequences and regression snapshots are added. The skipped=\"0\" XML text is fixture/snapshot content, not a test skip directive.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "ad208cc2911a0b48a6afae8bcae2f67de1393089",
+        "head": "e1a73147055d5a6ad02ad166c3a772b6d81c4898",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "ad208cc2911a0b48a6afae8bcae2f67de1393089",
+      "base": "30d0304d2f3e8c877a163971e5de8e6803d39211",
+      "url": "https://github.com/vitest-dev/vitest/commit/ad208cc2911a0b48a6afae8bcae2f67de1393089",
+      "subject": "fix: enable fsModuleCache by default (#11435)",
+      "date": "2026-10-01T18:06:19+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Filesystem module cache default is enabled and one doctor fixture explicitly disables caching. Cache flags are not a supported quality-gate rule.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "30d0304d2f3e8c877a163971e5de8e6803d39211",
+        "head": "ad208cc2911a0b48a6afae8bcae2f67de1393089",
+        "files_inspected": 7,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "30d0304d2f3e8c877a163971e5de8e6803d39211",
+      "base": "8ebcf5f8a862d92ba4b0b87d3f389a7d2f4c7488",
+      "url": "https://github.com/vitest-dev/vitest/commit/30d0304d2f3e8c877a163971e5de8e6803d39211",
+      "subject": "fix: fail the run on git and location filter errors (#11430)",
+      "date": "2026-10-01T13:22:33+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Git and filter failures now fail the run, and regression assertions verify nonzero exit. Existing conditional test syntax in unchanged context is not newly added.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "8ebcf5f8a862d92ba4b0b87d3f389a7d2f4c7488",
+        "head": "30d0304d2f3e8c877a163971e5de8e6803d39211",
+        "files_inspected": 7,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "8ebcf5f8a862d92ba4b0b87d3f389a7d2f4c7488",
+      "base": "7ebd95fdd8a181fbdf5a1d554784c46a8758ac8a",
+      "url": "https://github.com/vitest-dev/vitest/commit/8ebcf5f8a862d92ba4b0b87d3f389a7d2f4c7488",
+      "subject": "fix(browser): allow toHaveTextContent without arguments (#11425)",
+      "date": "2026-10-01T13:07:25+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Optional toHaveTextContent arguments gain explicit presence semantics and positive/negative regression assertions. No supported signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "7ebd95fdd8a181fbdf5a1d554784c46a8758ac8a",
+        "head": "8ebcf5f8a862d92ba4b0b87d3f389a7d2f4c7488",
+        "files_inspected": 4,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "7ebd95fdd8a181fbdf5a1d554784c46a8758ac8a",
+      "base": "d6620fae6fdb401a510af4e071f7451b7c638021",
+      "url": "https://github.com/vitest-dev/vitest/commit/7ebd95fdd8a181fbdf5a1d554784c46a8758ac8a",
+      "subject": "perf: reuse fsModuleCache when filtering by source (#11428)",
+      "date": "2026-10-01T12:25:58+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Transform cache service refactor and reuse tests. The renamed source file is runtime code, not a deleted test file; no supported new signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "d6620fae6fdb401a510af4e071f7451b7c638021",
+        "head": "7ebd95fdd8a181fbdf5a1d554784c46a8758ac8a",
+        "files_inspected": 9,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "d6620fae6fdb401a510af4e071f7451b7c638021",
+      "base": "a23368585bbf19da24808b3a5070630a008dd81a",
+      "url": "https://github.com/vitest-dev/vitest/commit/d6620fae6fdb401a510af4e071f7451b7c638021",
+      "subject": "fix(browser): close the mock route interception race (fix #8339) (#11083)",
+      "date": "2026-10-01T12:23:04+02:00",
+      "expected": [
+        {
+          "rule_id": "test-skip",
+          "path": "test/browser/fixtures/mocking/interception-probe.test.ts",
+          "line": 6,
+          "side": "right",
+          "reason": "New actual source registers this regression with test.runIf(server.config.name === 'chromium'), conditionally skipping it in other configured browsers. test is a direct named import from vitest. Intentional browser restriction is a review signal, not evidence of a defect."
+        }
+      ],
+      "unsupported": [],
+      "notes": "Proposed narrow extension; blind static annotation before detector results. The newly added Chromium-only test.runIf at line 6 is expected under conditional-test support. No alias or callback-context skip is newly added in this commit.",
+      "findings": [
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "test/browser/fixtures/mocking/interception-probe.test.ts",
+          "line": 6,
+          "side": "right",
+          "before": "",
+          "after": "test.runIf(server.config.name === 'chromium')('request interception is live once a mock is registered', async () => {",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        }
+      ],
+      "metadata": {
+        "repository": "vitest",
+        "base": "a23368585bbf19da24808b3a5070630a008dd81a",
+        "head": "d6620fae6fdb401a510af4e071f7451b7c638021",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "a23368585bbf19da24808b3a5070630a008dd81a",
+      "base": "c74e099a9d17e24e9816878165af4818df84a631",
+      "url": "https://github.com/vitest-dev/vitest/commit/a23368585bbf19da24808b3a5070630a008dd81a",
+      "subject": "feat(experimental): print how many tests were affected and a total when running `--changed` (#11424)",
+      "date": "2026-10-01T11:50:33+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Reporter output includes affected test totals, with new summary regression assertions. Template source strings do not add actual executable skip/focus directives in the host file.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "c74e099a9d17e24e9816878165af4818df84a631",
+        "head": "a23368585bbf19da24808b3a5070630a008dd81a",
+        "files_inspected": 4,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "c74e099a9d17e24e9816878165af4818df84a631",
+      "base": "8ea59df0d390876e5a96fb98f29cc0c25fdebb17",
+      "url": "https://github.com/vitest-dev/vitest/commit/c74e099a9d17e24e9816878165af4818df84a631",
+      "subject": "fix(deps): update all non-major dependencies (#11167)",
+      "date": "2026-10-01T10:33:58+02:00",
+      "expected": [],
+      "unsupported": [
+        "pnpm-workspace.yaml adds ignoreWorkspaceCycles: true. Workspace dependency-policy flags are outside the documented supported gate configurations."
+      ],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Dependency and CI action versions are updated, with small UI/runtime adaptations. Workflow steps remain gating under supported rules; no package script is weakened. Added pnpm workspace policy is outside the current gate-rule set.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "8ea59df0d390876e5a96fb98f29cc0c25fdebb17",
+        "head": "c74e099a9d17e24e9816878165af4818df84a631",
+        "files_inspected": 28,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "8ea59df0d390876e5a96fb98f29cc0c25fdebb17",
+      "base": "b59d64f96e155ad353a1caf18878c74c64c521ac",
+      "url": "https://github.com/vitest-dev/vitest/commit/8ea59df0d390876e5a96fb98f29cc0c25fdebb17",
+      "subject": "chore(deps): update dependency bumpp to v12 (#11258)",
+      "date": "2026-10-01T10:06:21+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. bumpp dependency major upgrade and release-script type adaptation. No supported signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "b59d64f96e155ad353a1caf18878c74c64c521ac",
+        "head": "8ea59df0d390876e5a96fb98f29cc0c25fdebb17",
+        "files_inspected": 3,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "b59d64f96e155ad353a1caf18878c74c64c521ac",
+      "base": "ff5bf2bc0bd99ccac7c40168397be26485700aa9",
+      "url": "https://github.com/vitest-dev/vitest/commit/b59d64f96e155ad353a1caf18878c74c64c521ac",
+      "subject": "chore(deps): update dependency cookie to v2 (#11318)",
+      "date": "2026-10-01T10:05:53+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Cookie dependency API migration and version/lock updates. No supported signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "ff5bf2bc0bd99ccac7c40168397be26485700aa9",
+        "head": "b59d64f96e155ad353a1caf18878c74c64c521ac",
+        "files_inspected": 3,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "ff5bf2bc0bd99ccac7c40168397be26485700aa9",
+      "base": "021296ba5e2596517adf8975d53c99e4cf76af81",
+      "url": "https://github.com/vitest-dev/vitest/commit/ff5bf2bc0bd99ccac7c40168397be26485700aa9",
+      "subject": "chore(deps): update dependency obug to v3 (#11373)",
+      "date": "2026-10-01T10:05:28+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. obug dependency upgrade and corresponding module graph snapshot path updates. Snapshot path string changes are not executable directives.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "021296ba5e2596517adf8975d53c99e4cf76af81",
+        "head": "ff5bf2bc0bd99ccac7c40168397be26485700aa9",
+        "files_inspected": 5,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "021296ba5e2596517adf8975d53c99e4cf76af81",
+      "base": "c87878ffc797e293b323c1eed8cf95961a957f56",
+      "url": "https://github.com/vitest-dev/vitest/commit/021296ba5e2596517adf8975d53c99e4cf76af81",
+      "subject": "chore(deps): update dependency fastify to v5.12.5 [security] (#11420)",
+      "date": "2026-10-01T10:04:59+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Lockfile-only fastify security update. The file has no documented supported gate scope.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "c87878ffc797e293b323c1eed8cf95961a957f56",
+        "head": "021296ba5e2596517adf8975d53c99e4cf76af81",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "c87878ffc797e293b323c1eed8cf95961a957f56",
+      "base": "6e4a48e1f7956434892c527c6ee12cfb4937aa14",
+      "url": "https://github.com/vitest-dev/vitest/commit/c87878ffc797e293b323c1eed8cf95961a957f56",
+      "subject": "chore(deps): update dependency strip-literal to v4 (#11374)",
+      "date": "2026-10-01T09:03:23+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. strip-literal dependency upgrade and copyright-year updates. No supported signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "6e4a48e1f7956434892c527c6ee12cfb4937aa14",
+        "head": "c87878ffc797e293b323c1eed8cf95961a957f56",
+        "files_inspected": 3,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "frozen-corpus",
+      "repository": "vitest-dev/vitest",
+      "frozen_head": "4ee66c021e0592c886dbab727f0f8da9366f99ab",
+      "head": "6e4a48e1f7956434892c527c6ee12cfb4937aa14",
+      "base": "aecbb15475b74acfb0ad7d7216cf78d550b8f264",
+      "url": "https://github.com/vitest-dev/vitest/commit/6e4a48e1f7956434892c527c6ee12cfb4937aa14",
+      "subject": "chore(deps): update dependency @vite-pwa/assets-generator to v2 (#11255)",
+      "date": "2026-10-01T08:59:30+02:00",
+      "expected": [],
+      "unsupported": [],
+      "notes": "Proposed narrow extension: direct test/it/describe skipIf/runIf, static Vitest named-import aliases, and context.skip inside simple recognized test arrow callbacks; blind static annotation before detector results. Documentation asset generator dependency upgrade and lockfile changes. No supported signal.",
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "aecbb15475b74acfb0ad7d7216cf78d550b8f264",
+        "head": "6e4a48e1f7956434892c527c6ee12cfb4937aa14",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "pytest-dev/pytest",
+      "head": "189ada2ddbec2bfe3a684faccf0ba484a24aeb7a",
+      "base": "fa3592d67c2cf4d706bb596b8a1e0e1be48d3a05",
+      "url": "https://github.com/pytest-dev/pytest/commit/189ada2ddbec2bfe3a684faccf0ba484a24aeb7a",
+      "expected": [
+        {
+          "path": "testing/test_assertrewrite.py",
+          "line": 1997,
+          "side": "right",
+          "rule_id": "test-skip",
+          "reason": "New executable pytest.mark.xfail decorator on test_walrus_no_double_eval_in_boolop. The known BoolOp walrus bug is intentionally expected to fail; this is a supported marker addition, not evidence of malicious or incorrect maintenance."
+        },
+        {
+          "path": "testing/test_assertrewrite.py",
+          "line": 2017,
+          "side": "right",
+          "rule_id": "test-skip",
+          "reason": "New executable pytest.mark.xfail decorator on test_walrus_no_double_eval_chained_compare. The known chained-comparison bug is intentionally expected to fail; this is a supported marker addition."
+        }
+      ],
+      "unsupported": [],
+      "notes": [
+        "Both decorators are outside the makepyfile triple-quoted generated-test strings. The later skipif decorator is unchanged context and is not newly added."
+      ],
+      "findings": [
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "testing/test_assertrewrite.py",
+          "line": 1997,
+          "side": "right",
+          "before": "",
+          "after": "@pytest.mark.xfail(reason=\"BoolOp condition re-evaluates walrus operand\")",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        },
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "testing/test_assertrewrite.py",
+          "line": 2017,
+          "side": "right",
+          "before": "",
+          "after": "@pytest.mark.xfail(reason=\"Chained compare re-evaluates walrus with same target\")",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        }
+      ],
+      "metadata": {
+        "repository": "pytest",
+        "base": "fa3592d67c2cf4d706bb596b8a1e0e1be48d3a05",
+        "head": "189ada2ddbec2bfe3a684faccf0ba484a24aeb7a",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "pytest-dev/pytest",
+      "head": "f48ded362adcb01c8394b265adc5d82cf9a174da",
+      "base": "b1e100dc4e6bc7f7b9cad115a85906184d897612",
+      "url": "https://github.com/pytest-dev/pytest/commit/f48ded362adcb01c8394b265adc5d82cf9a174da",
+      "expected": [
+        {
+          "path": "testing/test_collection.py",
+          "line": 1875,
+          "side": "right",
+          "rule_id": "test-skip",
+          "reason": "New executable pytest.skip call replaces the hard symlink assertion with an environment-dependent skip. It intentionally avoids false failures where symlinks are unavailable; the skip addition still belongs to the supported rule."
+        }
+      ],
+      "unsupported": [
+        "testing/test_collection.py:1874 adds # pragma: no cover to the unavailable-symlink path. Coverage exclusion directives are outside the numeric coverage-threshold rule."
+      ],
+      "notes": [
+        "Other changes are an author entry and a changelog note, outside detector source scope."
+      ],
+      "findings": [
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "testing/test_collection.py",
+          "line": 1875,
+          "side": "right",
+          "before": "",
+          "after": "pytest.skip(\"Symlinks not supported in this environment\")",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        }
+      ],
+      "metadata": {
+        "repository": "pytest",
+        "base": "b1e100dc4e6bc7f7b9cad115a85906184d897612",
+        "head": "f48ded362adcb01c8394b265adc5d82cf9a174da",
+        "files_inspected": 3,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "vitest-dev/vitest",
+      "head": "17e2b22dd018a9098a597d835bf45d1a7a3e73c8",
+      "base": "73614654a46f617c357920eecda439654a561f92",
+      "url": "https://github.com/vitest-dev/vitest/commit/17e2b22dd018a9098a597d835bf45d1a7a3e73c8",
+      "expected": [],
+      "unsupported": [],
+      "notes": [
+        {
+          "path": "test/e2e/snapshots/skip-test.test.ts",
+          "line": 123,
+          "side": "right",
+          "kind": "fixture-template-string",
+          "reason": "it.skip appears within a basic.test.ts fixture template passed to runInlineTests. The outer newly added regression test verifies obsolete snapshots remain visible. This is generated child-test source, excluded from direct executable-marker detection; it is not a newly skipped outer CI test."
+        },
+        {
+          "path": "test/e2e/snapshots/skip-test.test.ts",
+          "line": 172,
+          "side": "right",
+          "kind": "fixture-template-string",
+          "reason": "Second it.skip is likewise inside generated child-test fixture source; the outer regression test checks obsolete snapshots for longer test names."
+        },
+        "The source fix adjusts snapshot-key matching. No direct executable supported marker was added in the changed source."
+      ],
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "73614654a46f617c357920eecda439654a561f92",
+        "head": "17e2b22dd018a9098a597d835bf45d1a7a3e73c8",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "vitest-dev/vitest",
+      "head": "3ae5514e43d91781ff51f6f53b5b630d033edef4",
+      "base": "1a8b4337e3e6981f358b119dddca2108ae08e180",
+      "url": "https://github.com/vitest-dev/vitest/commit/3ae5514e43d91781ff51f6f53b5b630d033edef4",
+      "expected": [],
+      "unsupported": [],
+      "notes": [
+        {
+          "path": "test/cli/test/stacktraces.test.ts",
+          "line": 9,
+          "side": "left",
+          "kind": "skip-removed",
+          "reason": "Removes the Vite-6-dependent vitestIt.skip alias and imports normal it directly. Test execution is restored, so there is no new supported weakening marker."
+        },
+        "Snapshot changes update test names and stack frames; existing eslint-disable text occurs within snapshot context, not a new executable lint directive."
+      ],
+      "findings": [],
+      "metadata": {
+        "repository": "vitest",
+        "base": "1a8b4337e3e6981f358b119dddca2108ae08e180",
+        "head": "3ae5514e43d91781ff51f6f53b5b630d033edef4",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "vitest-dev/vitest",
+      "head": "90ca5b2ea66229d1ce9b4b24769a6c30b6f26ae8",
+      "base": "90c302f3b914b08949f9ee67c56c3489a60220db",
+      "url": "https://github.com/vitest-dev/vitest/commit/90ca5b2ea66229d1ce9b4b24769a6c30b6f26ae8",
+      "expected": [
+        {
+          "path": "test/core/test/cli-test.test.ts",
+          "line": 281,
+          "side": "right",
+          "rule_id": "test-skip",
+          "reason": "Adds a real executable ctx.skip inside the clearScreen test, conditional on rolldownVersion and vmThreads. The callback is changed to receive ctx. This is real conditional test skipping. The baseline missed this executable conditional skip; narrow Vitest callback support now covers it."
+        }
+      ],
+      "unsupported": [],
+      "notes": [
+        "The browser runner file changes stack-frame numbers inside snapshot templates. Expected is limited to declared supported patterns; unsupportednotes must be reported separately when discussing broader recall.",
+        "This real conditional skip was missed by the earlier revision; the current narrow Vitest support is expected to detect it."
+      ],
+      "findings": [
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "test/core/test/cli-test.test.ts",
+          "line": 281,
+          "side": "right",
+          "before": "",
+          "after": "ctx.skip(!!rolldownVersion && ctx.task.file.projectName === 'vmThreads')",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        }
+      ],
+      "metadata": {
+        "repository": "vitest",
+        "base": "90c302f3b914b08949f9ee67c56c3489a60220db",
+        "head": "90ca5b2ea66229d1ce9b4b24769a6c30b6f26ae8",
+        "files_inspected": 2,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "vitest-dev/vitest",
+      "head": "9b5af968027091062f896f08ef291b7b2d6d520f",
+      "base": "d19ff43f2a61f7381cbf60c37edc65c2831b77e6",
+      "url": "https://github.com/vitest-dev/vitest/commit/9b5af968027091062f896f08ef291b7b2d6d520f",
+      "expected": [
+        {
+          "path": "test/cli/test/list-changed.test.ts",
+          "line": 5,
+          "side": "right",
+          "rule_id": "test-skip",
+          "reason": "Imports Vitest test as baseTest, then binds test = baseTest.skipIf(!!process.env.ECOSYSTEM_CI). The following test is conditionally skipped in ecosystem CI. This is real executable conditional skipping through an alias. The baseline missed this executable conditional skip; named Vitest alias support now covers it."
+        }
+      ],
+      "unsupported": [],
+      "notes": [
+        "Expected is limited to declared supported patterns; unsupportednotes must be reported separately when discussing broader recall.",
+        "This real conditional skip was missed by the earlier revision; the current narrow Vitest support is expected to detect it."
+      ],
+      "findings": [
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "test/cli/test/list-changed.test.ts",
+          "line": 5,
+          "side": "right",
+          "before": "",
+          "after": "const test = baseTest.skipIf(!!process.env.ECOSYSTEM_CI)",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        }
+      ],
+      "metadata": {
+        "repository": "vitest",
+        "base": "d19ff43f2a61f7381cbf60c37edc65c2831b77e6",
+        "head": "9b5af968027091062f896f08ef291b7b2d6d520f",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "microsoft/playwright",
+      "head": "4112b96df0e6637e6148d8c498fa32ce06ead442",
+      "base": "e5d880b05f9a1d7fb5d17dd031b53739e5e39c0e",
+      "url": "https://github.com/microsoft/playwright/commit/4112b96df0e6637e6148d8c498fa32ce06ead442",
+      "expected": [
+        {
+          "rule_id": "test-skip",
+          "path": "tests/library/coverage.spec.ts",
+          "line": 20,
+          "side": "right",
+          "reason": "Intentional conditional exclusion when tracing is on; these tests start their own tracing."
+        }
+      ],
+      "unsupported": [],
+      "notes": [],
+      "findings": [
+        {
+          "rule_id": "test-skip",
+          "severity": "medium",
+          "title": "Test skipping added",
+          "path": "tests/library/coverage.spec.ts",
+          "line": 20,
+          "side": "right",
+          "before": "",
+          "after": "it.skip(({ trace }) => trace === 'on', 'the tests start their own tracing');",
+          "explanation": "A newly added skip or expected-failure marker can stop a test from blocking a failing change."
+        }
+      ],
+      "metadata": {
+        "repository": "playwright",
+        "base": "e5d880b05f9a1d7fb5d17dd031b53739e5e39c0e",
+        "head": "4112b96df0e6637e6148d8c498fa32ce06ead442",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated",
+      "repository": "eslint/eslint",
+      "head": "22eb58a21cbde2fbd53a1fae99453d408672de50",
+      "base": "88bf0024cb36caebf2880516d9a1f81aa75dafe2",
+      "url": "https://github.com/eslint/eslint/commit/22eb58a21cbde2fbd53a1fae99453d408672de50",
+      "expected": [
+        {
+          "rule_id": "continue-on-error",
+          "path": ".github/workflows/ecosystem-tests.yml",
+          "line": 24,
+          "side": "right",
+          "reason": "Intentional optional step so the subsequent failure notification can run."
+        }
+      ],
+      "unsupported": [],
+      "notes": [],
+      "findings": [
+        {
+          "rule_id": "continue-on-error",
+          "severity": "high",
+          "title": "Workflow failure allowed",
+          "path": ".github/workflows/ecosystem-tests.yml",
+          "line": 24,
+          "side": "right",
+          "before": "- id: tester",
+          "after": "- continue-on-error: true",
+          "explanation": "This workflow step or job can now fail without making the workflow fail."
+        }
+      ],
+      "metadata": {
+        "repository": "eslint",
+        "base": "88bf0024cb36caebf2880516d9a1f81aa75dafe2",
+        "head": "22eb58a21cbde2fbd53a1fae99453d408672de50",
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Tracked files only; untracked files are not included."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated-config",
+      "repository": "groupthinking/EventRelay",
+      "head": "c6d13fe09a833c34651eba2c451e454202e47b17",
+      "base": "be679477d94ea2cc94b5f7f776ea88d040571330",
+      "paths": [
+        "pyproject.toml"
+      ],
+      "url": "https://github.com/groupthinking/EventRelay/commit/c6d13fe09a833c34651eba2c451e454202e47b17",
+      "expected": [
+        {
+          "rule_id": "coverage-lowered",
+          "path": "pyproject.toml",
+          "line": 350,
+          "side": "right",
+          "reason": "The author intentionally recalibrated fail_under from 88.1833 to 84.2 after removing an unwired backend and its tests."
+        }
+      ],
+      "unsupported": [],
+      "notes": [
+        "Selected configuration file only; the full commit also deletes many test files. No complete-commit label is claimed."
+      ],
+      "findings": [
+        {
+          "rule_id": "coverage-lowered",
+          "severity": "high",
+          "title": "Coverage threshold lowered",
+          "path": "pyproject.toml",
+          "line": 350,
+          "side": "right",
+          "before": "fail_under = 88.1833",
+          "after": "fail_under = 84.2",
+          "explanation": "The configured tool.coverage.report.fail_under threshold decreased from 88.1833 to 84.2."
+        }
+      ],
+      "metadata": {
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Selected configuration files only."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    },
+    {
+      "selection": "curated-config",
+      "repository": "Naykel98/ebg-protrack",
+      "head": "7326b152446e5bb74240e829e24042dc20586675",
+      "base": "0c63de31aa2d3664da25c01a2c1ceff2582c9023",
+      "paths": [
+        "tsconfig.json"
+      ],
+      "url": "https://github.com/Naykel98/ebg-protrack/commit/7326b152446e5bb74240e829e24042dc20586675",
+      "expected": [
+        {
+          "rule_id": "typescript-strict-disabled",
+          "path": "tsconfig.json",
+          "line": 13,
+          "side": "right",
+          "reason": "Explicit compilerOptions strict true became false; commit title says this was for the production build. Further rationale was not established."
+        }
+      ],
+      "unsupported": [],
+      "notes": [
+        "Selected configuration file only; no complete-commit label is claimed."
+      ],
+      "findings": [
+        {
+          "rule_id": "typescript-strict-disabled",
+          "severity": "high",
+          "title": "TypeScript strict checking disabled",
+          "path": "tsconfig.json",
+          "line": 13,
+          "side": "right",
+          "before": "\"strict\": true,",
+          "after": "\"strict\": false,",
+          "explanation": "This compiler option now disables TypeScript checks that previously applied."
+        }
+      ],
+      "metadata": {
+        "files_inspected": 1,
+        "excluded": [],
+        "scope": "Selected configuration files only."
+      },
+      "missing": [],
+      "unexpected": [],
+      "invalid_addresses": [],
+      "error": null,
+      "passed": true
+    }
+  ]
+}
