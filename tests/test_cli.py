@@ -155,6 +155,22 @@ class CliTests(unittest.TestCase):
         self.assertEqual(data["findings"], [])
         self.assertEqual(data["metadata"]["files_inspected"], 0)
 
+    def test_crlf_only_working_tree_change_is_a_clean_report(self):
+        repo = self.make_repo()
+        (repo / ".gitattributes").write_bytes(b".coveragerc text eol=lf\n")
+        (repo / ".coveragerc").write_bytes(b"[report]\nfail_under = 90\n")
+        self.git(repo, "add", "--all")
+        self.git(repo, "commit", "-q", "-m", "Store LF coverage baseline")
+        (repo / ".coveragerc").write_bytes(b"[report]\r\nfail_under = 90\r\n")
+
+        result = self.run_cli("--repo", repo, "--format", "json")
+        data = json.loads(result.stdout)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(data["findings"], [])
+        self.assertEqual(data["metadata"]["files_inspected"], 0)
+        self.assertEqual(data["metadata"]["excluded"], [])
+
     def test_html_write_failure_is_an_inspection_error(self):
         temp = tempfile.TemporaryDirectory(prefix="gate drift report ")
         self.addCleanup(temp.cleanup)

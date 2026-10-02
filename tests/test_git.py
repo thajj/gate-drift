@@ -104,6 +104,47 @@ class GitSnapshotTests(unittest.TestCase):
         self.assertEqual(analyze(changes), [])
         self.assertEqual(metadata["files_inspected"], 1)
 
+    def test_crlf_coverage_edit_has_normalized_evidence(self):
+        (self.repo / ".gitattributes").write_bytes(b".coveragerc text eol=lf\n")
+        (self.repo / ".coveragerc").write_bytes(b"[report]\nfail_under = 90\n")
+        self.commit("Store LF coverage baseline")
+        (self.repo / ".coveragerc").write_bytes(b"[report]\r\nfail_under = 30\r\n")
+
+        changes, metadata = read_changes(self.repo)
+
+        self.assertEqual(len(changes), 1)
+        self.assertEqual(changes[0].path, ".coveragerc")
+        self.assertEqual(changes[0].before, "[report]\nfail_under = 90\n")
+        self.assertEqual(changes[0].after, "[report]\nfail_under = 30\n")
+        self.assertEqual(metadata["files_inspected"], 1)
+        findings = analyze(changes)
+        self.assertEqual(len(findings), 1)
+        self.assertEqual(findings[0].rule_id, "coverage-lowered")
+        self.assertEqual(findings[0].line, 2)
+        self.assertEqual(findings[0].before, "fail_under = 90")
+        self.assertEqual(findings[0].after, "fail_under = 30")
+
+    def test_crlf_pure_rename_is_one_file_without_findings(self):
+        before_path = "tests/old name.test.ts"
+        after_path = "tests/new name.test.ts"
+        content = "test('authentication', () => {\n  expect(login('bad')).toBe(401);\n});\n"
+        (self.repo / ".gitattributes").write_bytes(b"* text=auto\n")
+        (self.repo / ".coveragerc").write_bytes(b"[report]\nfail_under = 90\n")
+        self.write(before_path, content)
+        (self.repo / before_path).write_bytes(content.encode("utf-8"))
+        self.commit("Store LF test baseline")
+        self.git("mv", before_path, after_path)
+        (self.repo / after_path).write_bytes(content.replace("\n", "\r\n").encode("utf-8"))
+
+        changes, metadata = read_changes(self.repo)
+
+        self.assertEqual(len(changes), 1)
+        self.assertEqual(changes[0].path, after_path)
+        self.assertEqual(changes[0].before, content)
+        self.assertEqual(changes[0].after, content)
+        self.assertEqual(metadata["files_inspected"], 1)
+        self.assertEqual(analyze(changes), [])
+
     def test_untracked_files_are_not_included(self):
         self.write("tests/untracked.test.ts", "test.skip('hidden', () => {});\n")
 

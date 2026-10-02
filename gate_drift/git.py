@@ -97,7 +97,11 @@ def _working_changes(root, base_sha):
         if b"\0" in before or b"\0" in after:
             excluded.append(path + " (binary)")
             continue
-        changes.append(FileChange(path, before.decode("utf-8", "replace"), after.decode("utf-8", "replace")))
+        before_text = before.decode("utf-8", "replace").replace("\r\n", "\n")
+        after_text = after.decode("utf-8", "replace").replace("\r\n", "\n")
+        if before_text == after_text and path not in renames:
+            continue
+        changes.append(FileChange(path, before_text, after_text))
     return changes, excluded
 
 
@@ -109,7 +113,7 @@ def read_changes(repo, base="HEAD", head=None, staged=False):
         changes, excluded = _working_changes(root, base_sha)
         return changes, {"repository": root.name, "base": base_sha, "head": "working tree",
                          "files_inspected": len(changes), "excluded": excluded,
-                         "scope": "Tracked files only; untracked files are not included. Working-tree files are compared as raw bytes, without Git filters."}
+                         "scope": "Tracked files only; untracked files are not included. Git filters are not run; CRLF line endings are normalized for text comparison."}
     args = ["diff", "--no-ext-diff", "--no-textconv", "--name-status", "-z", "-M"]
     if staged:
         args.append("--cached")
@@ -149,7 +153,7 @@ def read_changes(repo, base="HEAD", head=None, staged=False):
         if b"\0" in before or b"\0" in after:
             excluded.append(path + " (binary)")
             continue
-        changes.append(FileChange(path, before.decode("utf-8", "replace"), after.decode("utf-8", "replace")))
+        changes.append(FileChange(path, before.decode("utf-8", "replace").replace("\r\n", "\n"), after.decode("utf-8", "replace").replace("\r\n", "\n")))
     metadata = {
         "repository": root.name,
         "base": base_sha,

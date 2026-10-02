@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gate-drift"
-version = "0.1.0"
+version = "0.1.1"
 description = "Review Git changes that weaken tests, coverage, CI workflows, and type checks."
 requires-python = ">=3.10"
 license = "MIT"

@@ -6,6 +6,8 @@ Gate Drift reviews Git changes for newly skipped tests, lower coverage requireme
 
 Python 3.10+ · Git 2.29+ · **zero runtime dependencies** · offline · MIT
 
+[Try the live synthetic demo](https://toufichajj.dev/gate-drift/) · [Download the latest release](https://github.com/thajj/gate-drift/releases/latest)
+
 ```diff
 - test('rejects invalid credentials', () => {
 + test.skip('rejects invalid credentials', () => {
@@ -84,7 +86,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: thajj/gate-drift
-          ref: v0.1.0 # Pin a reviewed commit SHA for stronger reproducibility.
+          ref: v0.1.1 # Pin a reviewed commit SHA for stronger reproducibility.
           path: gate-drift
       - uses: actions/setup-python@v5
         with:
@@ -108,7 +110,7 @@ Make the check required in branch protection if you want findings to hold a merg
 
 This is a **heuristic review aid**, not a correctness, security, or intent verdict. A clean report is not proof that checks are intact. Conditional disabling, custom runners, imported configuration, multiline constructs, deleted assertions, and renamed test functions are not comprehensively modeled. Added suppressions and intentional threshold reductions can be legitimate findings. There is no invented safety score.
 
-Only tracked text files are inspected. Binary files and working-tree symlinks are listed as excluded. Files over 2 MiB cause an inspection error. Reports contain source snippets and paths; review them before sharing. The tool sends no network requests and never executes repository code.
+Only tracked text files are inspected. Binary files and working-tree symlinks are listed as excluded. Changed files over 2 MiB cause an inspection error. CRLF line endings are normalized for text comparison. Reports contain source snippets and paths; review them before sharing. The tool sends no network requests and never executes repository code.
 
 ## Development
 
